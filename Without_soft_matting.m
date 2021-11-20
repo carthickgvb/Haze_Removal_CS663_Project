@@ -4,7 +4,6 @@ clear;
 close all;
 
 I = im2double(imread("hazy_images/0001_0.95_0.2.jpg"));
-%I = double(I);
 Ir = I(:,:,1); % Red channel
 Ig = I(:,:,2); % Green channel
 Ib = I(:,:,3); % Blue channel
@@ -28,13 +27,12 @@ figure(2); imshow(J_dark);
 
 %% determining air light: A
 
-% A = zeros(1,3);
-% brightest = max(J_dark,[],'all');
-% bright_pixel_loc = J_dark>(brightest*(0.999)); % top 0.1% brightest pixels
-% A(1) = max(Ir(bright_pixel_loc),[],'all');
-% A(2) = max(Ig(bright_pixel_loc),[],'all');
-% A(3) = max(Ib(bright_pixel_loc),[],'all');
-A = Estimating_Atmospheric_Light(I,J_dark);
+A = zeros(1,3);
+brightest = max(J_dark,[],'all');
+bright_pixel_loc = J_dark>(brightest*(0.999)); % top 0.1% brightest pixels
+A(1) = max(Ir(bright_pixel_loc),[],'all');
+A(2) = max(Ig(bright_pixel_loc),[],'all');
+A(3) = max(Ib(bright_pixel_loc),[],'all');
 
 %% determing transmission: t
 
@@ -60,12 +58,4 @@ J(:,:,1) = ((Ir-A(1))./max(t,t0)) + A(1);
 J(:,:,2) = ((Ig-A(2))./max(t,t0)) + A(2);
 J(:,:,3) = ((Ir-A(3))./max(t,t0)) + A(3);
 
-J1 = rgb2hsv(J);
-%J1(:,:,1) = (J1(:,:,1)-min(J1(:,:,1),[],'all'))/(max(J1(:,:,1),[],'all')-min(J1(:,:,1),[],'all'));
-%J1(:,:,2) = (J1(:,:,2)-min(J1(:,:,2),[],'all'))/(max(J1(:,:,2),[],'all')-min(J1(:,:,2),[],'all'));
-J1(:,:,3) = (J1(:,:,3)-min(J1(:,:,3),[],'all'))/(max(J1(:,:,3),[],'all')-min(J1(:,:,3),[],'all'));
-J1 = hsv2rgb(J1);
-
 figure(); imshow(J);
-figure(); imshow(J1);
-
