@@ -94,8 +94,8 @@ t_ref = pcg(L + lambda * eye(size(L)), lambda * t); % Preconditioned Conjugate G
 
 t0 = 0.1;
 J = zeros(size(I));
-J(:, :, 1) = ((Ir - A(1)) ./ max(t, t0)) + A(1);
-J(:, :, 2) = ((Ig - A(2)) ./ max(t, t0)) + A(2);
-J(:, :, 3) = ((Ib - A(3)) ./ max(t, t0)) + A(3);
+J(:,:,1) = ((Ir-A(1))./max(t,t0)) + A(1);
+J(:,:,2) = ((Ig-A(2))./max(t,t0)) + A(2);
+J(:,:,3) = ((Ib-A(3))./max(t,t0)) + A(3);
 
 figure(); imshow(J);
