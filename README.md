@@ -1,1 +1,1 @@
-Implement "Single Image Haze Removal Using Dark Channel Prior, Kaiming et al. paper" (https://ieeexplore.ieee.org/document/5567108) with guided filter for enhancment from Guided Image Filtering, Kaiming He et al. paper (https://ieeexplore.ieee.org/document/6319316). 
+Implemented "Single Image Haze Removal Using Dark Channel Prior, Kaiming et al. paper" (https://ieeexplore.ieee.org/document/5567108) with guided filter for enhancing block artifacts from "Guided Image Filtering, Kaiming He et al. paper" (https://ieeexplore.ieee.org/document/6319316). 
